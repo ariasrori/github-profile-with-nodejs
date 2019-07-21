@@ -11,7 +11,7 @@ const options = {
     }
 }
 
-// TODO: [x] Read the data
+// TODO: [x] Read the data 
 let request = https.request(options, (response) => {
     let body = ''
     console.log('response : '+response.statusCode);
