@@ -11,7 +11,7 @@ const options = {
     }
 }
 
-// TODO: Read the data
+// TODO: [x] Read the data
 let request = https.request(options, (response) => {
     let body = ''
     console.log('response : '+response.statusCode);
@@ -19,10 +19,12 @@ let request = https.request(options, (response) => {
         body += data
     })
     response.on('end', () => {
-        console.log(typeof body);
+
+        // TODO: [x] Parse the data
+        // Conver String to JSON (JavaScript Object)
+        let profile = JSON.parse(body);
+        console.log(profile.avatar_url);
     })
-    // TODO: Parse the data
-    // Conver String to JSON (JavaScript Object)
     // TODO: Print the data out
 });
 
