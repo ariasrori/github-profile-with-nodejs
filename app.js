@@ -1,10 +1,11 @@
 // TODO: [X] Connect to Github API
 let https = require('https')
 
+const username = 'ariasrori';
 const options = {
     hostname : 'api.github.com',
     port : 443,
-    path : '/users/ariasrori',
+    path : `/users/${username}`,
     method : 'GET',
     headers: {
         'user-agent' : 'nodejs'
@@ -19,14 +20,17 @@ let request = https.request(options, (response) => {
         body += data
     })
     response.on('end', () => {
-
         // TODO: [x] Parse the data
         // Conver String to JSON (JavaScript Object)
         let profile = JSON.parse(body);
+        if (response.statusCode === 200) {
 
-        // TODO: [x] Print the data out
-        // console.log(profile.login + ' owns ' + profile.public_repos + '');
-        console.log(`${profile.login} owns ${profile.public_repos} repo(s) and has ${profile.followers} followers(s)`);
+          // TODO: [x] Print the data out
+          // console.log(profile.login + ' owns ' + profile.public_repos + '');
+          console.log(`${profile.login} owns ${profile.public_repos} repo(s) and has ${profile.followers} followers(s)`);
+        } else {
+          console.log(`Profile with username '${username}' not found`);
+        }
     })
 });
 
