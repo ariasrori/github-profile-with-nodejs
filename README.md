@@ -7,4 +7,4 @@ Solution : Use NodeJS to connect to Github API to get profile info and print out
 * [x] Connect to Github API
 * [x] Read the data
 * [x] Parse the data
-* [ ] Print the data out
+* [x] Print the data out
