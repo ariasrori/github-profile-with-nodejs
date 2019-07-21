@@ -11,17 +11,23 @@ const options = {
     }
 }
 
-const request = https.request(options, (result) => {
-    console.log(result.statusCode);
+// TODO: Read the data
+let request = https.request(options, (response) => {
+    let body = ''
+    console.log('response : '+response.statusCode);
+    response.on('data', (data) => {
+        body += data
+    })
+    response.on('end', () => {
+        console.log(typeof body);
+    })
+    // TODO: Parse the data
+    // Conver String to JSON (JavaScript Object)
+    // TODO: Print the data out
 });
 
 request.end();
 
 request.on('error',(e) => {
+  console.log(e);
 });
-
-console.log(e);
-
-// TODO: Read the data
-// TODO: Parse the data
-// TODO: Print the data out
